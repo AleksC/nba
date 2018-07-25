@@ -26,3 +26,6 @@ Route::get('/login', 'LoginController@create');
 Route::get('/logout', 'LoginController@destroy');
 
 Route::post('/', 'LoginController@store')->name('login');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
