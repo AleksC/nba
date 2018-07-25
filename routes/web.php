@@ -26,6 +26,9 @@ Route::get('/login', 'LoginController@create');
 Route::get('/logout', 'LoginController@destroy');
 
 Route::post('/', 'LoginController@store')->name('login');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'TeamsController@index')->name('home');
+
+Route::post('/teams/{team}/comments', 'CommentsController@store')->name('add-comment');

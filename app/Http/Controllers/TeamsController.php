@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
+use App\User;
 
 class TeamsController extends Controller
 {
@@ -16,13 +17,16 @@ class TeamsController extends Controller
     public function index()
     {
         $teams = Team::all();
-        return view('teams', compact('teams'));
+        $users = User::all();
+
+        return view('teams', ['teams' => $teams, 'users' => $users]);
     }
 
     public function show($id)
     {
         $team = Team::findOrFail($id);
+        $users = User::all();
         
-        return view('team', compact('team'));
+        return view('team', ['team' => $team, 'users' => $users]);
     }
 }
